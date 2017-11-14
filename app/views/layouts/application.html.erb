@@ -10,6 +10,7 @@
 
 <body>
   <div class = 'pull-right'>
+    
   <% if user_signed_in? %>
     Signed in as: <strong><%= current_user.email %></strong> |
     <%= link_to 'Edit', edit_user_registration_path, :class => 'navbar_link' %> -
