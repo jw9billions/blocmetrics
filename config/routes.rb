@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
-  root 'users#sign_up'
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
