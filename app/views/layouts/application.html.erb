@@ -10,7 +10,7 @@
 
 <body>
   <div class = 'pull-right'>
-    
+
   <% if user_signed_in? %>
     Signed in as: <strong><%= current_user.email %></strong> |
     <%= link_to 'Edit', edit_user_registration_path, :class => 'navbar_link' %> -
@@ -24,6 +24,7 @@
   <div>
     <ul class = 'nav nav-tabs'>
       <li><%= link_to "Blocmetrics", welcome_index_path %></li>
+      <li><%= link_to "My Applications", registered_applications_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
     </ul>
   </div>
