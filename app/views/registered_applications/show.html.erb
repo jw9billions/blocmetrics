@@ -1,2 +1,9 @@
-<h1>RegisteredApplications#show</h1>
-<p>Find me in app/views/registered_applications/show.html.erb</p>
+<div class="container">
+<h1><%= @registered_application.name %></h1>
+<h4><%= @registered_application.url %></h4>
+</div>
+
+<div>
+  <%= link_to "Edit the application", edit_registered_application_path(@registered_application), class: 'btn btn-success' %>
+  <%= link_to "Delete the application", registered_application_path(@registered_application), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete the application?" } %>
+</div>
