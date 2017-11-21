@@ -2,21 +2,25 @@ class RegisteredApplicationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @registered_applications = RegisteredApplication.all
+    #@registered_applications = RegisteredApplication.visible_to(current_user)
+    @registered_applications = current_user.registered_applications
   end
 
   def show
     @registered_application = RegisteredApplication.find(params[:id])
+    @events = @registered_application.events.group_by(&:name)
   end
 
   def new
+    #@registered_application = current_user.registered_applications.build
     @registered_application = RegisteredApplication.new
   end
 
   def create
-    @registered_application = RegisteredApplication.new
-    @registered_application.user = current_user
-    @registered_application.assign_attributes(registered_application_params)
+    #@registered_application = RegisteredApplication.new
+    #@registered_application.user = current_user
+    #@registered_application.assign_attributes(registered_application_params)
+    @registered_application = current_user.registered_applications.build(registered_application_params)
 
     if @registered_application.save
       flash[:notice] = "#{@registered_application.name} was saved! Thanks!"
