@@ -1,9 +1,30 @@
 <div class="container">
-<h1><%= @registered_application.name %></h1>
-<h4><%= @registered_application.url %></h4>
+  <h1><%= @registered_application.name %></h1>
+  <small><%= @registered_application.url %></small>
 </div>
+<br/>
 
-<div>
+<div class="container">
   <%= link_to "Edit the application", edit_registered_application_path(@registered_application), class: 'btn btn-success' %>
   <%= link_to "Delete the application", registered_application_path(@registered_application), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete the application?" } %>
+</div>
+<br/>
+
+<div class="container">
+  <div class="col-md-4">
+    <div class = "events">
+      <h3>Events:</h3>
+      <table>
+        <% @events.each do |event, array| %>
+          <tr>
+            <td><%= event %></td>
+            <td><%= array.count %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="back">
+    <%= link_to "Back to Applications", registered_applications_path, class: 'btn btn-primary pull-right' %>
+  </div>
 </div>
