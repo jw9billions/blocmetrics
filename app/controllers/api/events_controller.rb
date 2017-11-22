@@ -4,8 +4,7 @@ class API::EventsController < ApplicationController
 
   def create
     registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
-    controller.request.env['HTTP_ORIGIN'] = registered_application.url #(this assumes registered_application is a factory)
-
+    
     if registered_application
       #event = registered_application.events.build(event_params)
       event = Event.new(event_params)
