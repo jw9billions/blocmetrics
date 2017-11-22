@@ -1,27 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe API::EventsController, type: :controller do
-  let(:user1) { User.create!(email: "jw9billions@gmail.com", username: 'password') }
-  let(:registered_application) { create(:registered_application, user_id: user1.id) }
 
-  describe "POST create" do
-    before do
-     controller.request.env['HTTP_ORIGIN'] = registered_application.url
-     post :create, event: { name: "About Page Load" }
-    end
+  before(:each) do
+    @my_user = FactoryGirl.create(:user)
+    sign_in @my_user
+    @my_app = FactoryGirl.create(:registered_application, user: @my_user)
+    controller.request.env['HTTP_ORIGIN'] = @my_app.url
+  end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
-
-    it "returns json content type" do
-      expect(response.content_type).to eq 'application/json'
-    end
-
-    it "creates a event with the correct attributes" do
-      json = JSON.parse(response.body)
-      expect(json["name"]).to eq("About Page Load")
+  describe "OPTIONS show" do
+    it 'returns the response CORS headers' do
+      post :create, event: { name: "About Page Load"}
+      expect(response.headers['Access-Control-Allow-Origin']).to eq('*')
     end
   end
 
+  describe "POST create" do
+    it "increases the number of events by 1" do
+      expect{ post :create, :event => { :name => "MyApp1"} }.to change(Event, :count).by(1)
+    end
+  end
 end
