@@ -12,7 +12,6 @@ class API::EventsController < ApplicationController
       event.registered_application = registered_application
 
       if event.save
-        binding.pry
         render json: event, status: :created
       else
         render json: {error: event.errors}, status: :unprocessable_entity
