@@ -1,28 +1,24 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Blocmetrics allows users to create accounts, verify their emails, and add web apps to track their activities.
+Here are the a few steps to make it work really easy!
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+// # create a blocmetrics object to take JavaScript event.
+var blocmetrics = {};
+
+  blocmetrics.report = function(eventName){
+
+    // #1, we create an event JSON object to send to the Blocmetrics analytics service.
+    var event = { event: { name: eventName } };
+
+    // #2, we initialize a new XMLHttpRequest() (AJAX request).
+    var request = new XMLHttpRequest();
+
+    // #3, we set the HTTP method to POST, the url of our events endpoint, and allow the request to run asynchronously.
+    request.open("POST", "http://localhost:3000/api/events", true);
+
+    // #4, we set the request Content-Type header to 'application/json'. Without that, our API::EventsController would not know to process the request as JSON.
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    // #5, we finally send the request.
+    request.send(JSON.stringify(event));
+  }
