@@ -32,4 +32,5 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'simplecov'
+  gem 'rack-cors', :require => 'rack/cors'
 end
