@@ -33,4 +33,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'simplecov'
   gem 'rack-cors', :require => 'rack/cors'
+  gem 'chartkick'
+  gem 'groupdate'
 end
