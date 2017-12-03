@@ -21,6 +21,9 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'chartkick'
+gem 'groupdate'
 
 
 group :development, :test do
@@ -32,7 +35,4 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'simplecov'
-  gem 'rack-cors', :require => 'rack/cors'
-  gem 'chartkick'
-  gem 'groupdate'
 end
