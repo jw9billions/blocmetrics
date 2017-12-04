@@ -1,4 +1,5 @@
 Blocmetrics allows users to create an account, verify their email, and add web apps to track events.
+Please feel free to visit my web at https://salty-citadel-61389.herokuapp.com/
 
 A server-side API that captures and saves those events to a database.
 
