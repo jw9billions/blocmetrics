@@ -23,3 +23,23 @@ h1 {
 body {
   background-color: lightgray;
 }
+
+.btn.btn-primary, .btn.btn-primary:active {
+  background-color: blue;
+}
+
+.btn.btn-success, .btn.btn-success:active {
+  background-color: green;
+}
+
+.snippet {
+  background-color: white;
+  padding: 20px;
+  width: 600px;
+  margin: 30px;
+  border-radius: 20px;
+}
+
+.code-inside {
+  margin-left: 20px;
+}
